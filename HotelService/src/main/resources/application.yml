@@ -1,0 +1,26 @@
+server:
+  port: 2020
+  
+spring:
+  application:
+    name: HOTEL-SERVICE
+  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/hotel_service_new
+    url: jdbc:postgresql://localhost:5432/hotel_service_new
+    username: postgres
+    password: root
+  jpa:
+    hibernate.ddl-auto: update
+#    generate-ddl: true
+    show-sql: true
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: RATING-SERVICE
+  data:
+    mongodb:
+      database: rating_service_new
+      uri: mongodb://localhost:27017
+#spring.data.mongodb:
+#  database: rating_service_new # Database name.
+#  uri: mongodb://localhost:27017 # Mongo database URI. Cannot be set with host, port and credentials.
+  
+server:
+  port: 3030
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
