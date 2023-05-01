@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alpha.RatingService.entity.Rating;
+import com.alpha.RatingService.exception.ResourceNotFoundException;
 import com.alpha.RatingService.repository.RatingRepository;
 import com.alpha.RatingService.service.RatingService;
 
@@ -34,6 +35,33 @@ public class RatingServiceImpl implements RatingService {
 	@Override
 	public List<Rating> getAllRatingsByHotelId(String hotelId) {
 		return ratingRepository.findByHotelId(hotelId);
+	}
+
+	@Override
+	public Rating getRatingById(String ratingId) {
+		return ratingRepository.findById(ratingId).orElseThrow(() -> new ResourceNotFoundException("rating not found with id: "+ratingId));
+	}
+
+	@Override
+	public Rating updateRatingById(String ratingId, Rating updatedRating) {
+		
+		// get rating from database
+		Rating rating = ratingRepository.findById(ratingId).orElseThrow(() -> new ResourceNotFoundException("rating not found with id: "+ratingId));
+		
+		// set/update rating
+		rating.setUserId(updatedRating.getUserId());
+		rating.setHotelId(updatedRating.getHotelId());
+		rating.setRating(updatedRating.getRating());
+		rating.setFeedback(updatedRating.getFeedback());
+		
+		// save rating
+		return ratingRepository.save(rating);
+	}
+
+	@Override
+	public void deleteRatingById(String ratingId) {
+		Rating rating = ratingRepository.findById(ratingId).orElseThrow(() -> new ResourceNotFoundException("rating not found with id: "+ratingId));
+		ratingRepository.delete(rating);
 	}
 
 }
