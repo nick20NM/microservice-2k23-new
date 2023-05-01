@@ -18,8 +18,7 @@ import lombok.Setter;
 public class Hotel {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long hotelId;
+	private String hotelId;
 	private String name;
 	private String location;
 	private String about;

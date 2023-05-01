@@ -30,7 +30,7 @@ public class HotelController {
 	
 	// get hotel by id
 	@GetMapping("/{hotelId}")
-	public ResponseEntity<Hotel> getHotelById(@PathVariable long hotelId){
+	public ResponseEntity<Hotel> getHotelById(@PathVariable String hotelId){
 		return ResponseEntity.ok(hotelService.getHotelById(hotelId));
 	}
 	

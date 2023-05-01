@@ -36,13 +36,13 @@ public class RatingController {
 	
 	// get all ratings by user id
 	@GetMapping("/users/{userId}")
-	public ResponseEntity<List<Rating>> getAllRatingsByUserId(@PathVariable long userId){
+	public ResponseEntity<List<Rating>> getAllRatingsByUserId(@PathVariable String userId){
 		return ResponseEntity.ok(ratingService.getAllRatingsByUserId(userId));
 	}
 	
 	// get all ratings by hotel id
 	@GetMapping("/hotels/{hotelId}")
-	public ResponseEntity<List<Rating>> getAllRatingsByHotelId(@PathVariable long hotelId){
+	public ResponseEntity<List<Rating>> getAllRatingsByHotelId(@PathVariable String hotelId){
 		return ResponseEntity.ok(ratingService.getAllRatingsByHotelId(hotelId));
 	}
 }

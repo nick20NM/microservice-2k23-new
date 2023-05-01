@@ -6,9 +6,9 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.alpha.RatingService.entity.Rating;
 
-public interface RatingRepository extends MongoRepository<Rating, Long> {
+public interface RatingRepository extends MongoRepository<Rating, String> {
 
 	// custom finder methods
-	List<Rating> findByUserId(long userId);
-	List<Rating> findByHotelId(long hotelId);
+	List<Rating> findByUserId(String userId);
+	List<Rating> findByHotelId(String hotelId);
 }

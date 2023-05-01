@@ -10,7 +10,7 @@ public interface HotelService {
 	Hotel createHotel(Hotel hotel);
 	
 	// get hotel by id
-	Hotel getHotelById(long hotelId);
+	Hotel getHotelById(String hotelId);
 	
 	// get all hotels
 	List<Hotel> getAllHotels();
